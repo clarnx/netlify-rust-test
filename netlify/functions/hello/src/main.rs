@@ -19,7 +19,7 @@ async fn main() -> Result<(), Error> {
 }
 
 pub(crate) async fn my_handler(
-    event: LambdaEvent<ApiGatewayProxyRequest>,
+    event: LambdaEvent<Value>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
     let payload = event.payload;
 
@@ -29,7 +29,7 @@ pub(crate) async fn my_handler(
         status_code: 200,
         headers: HeaderMap::new(),
         multi_value_headers: HeaderMap::new(),
-        body: Some(Body::Text(payload.body.unwrap())),
+        body: Some(Body::Text(payload.to_string())),
         is_base64_encoded: false,
     };
 
