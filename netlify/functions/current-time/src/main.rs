@@ -1,11 +1,10 @@
 use aws_lambda_events::encodings::Body;
-use aws_lambda_events::event::apigw::ApiGatewayProxyResponse;
+use aws_lambda_events::event::apigw::{ApiGatewayProxyRequest, ApiGatewayProxyResponse};
 use chrono::Utc;
 use http::header::HeaderMap;
 use lambda_runtime::{service_fn, Error, LambdaEvent};
 use log::LevelFilter;
 use serde::Serialize;
-use serde_json::Value;
 use simple_logger::SimpleLogger;
 
 #[tokio::main]
@@ -26,7 +25,7 @@ struct ResponseData {
 }
 
 pub(crate) async fn my_handler(
-    _event: LambdaEvent<Value>,
+    _event: LambdaEvent<ApiGatewayProxyRequest>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
     let current_time = Utc::now().to_rfc2822();
 
