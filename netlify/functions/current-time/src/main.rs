@@ -5,7 +5,6 @@ use http::header::HeaderMap;
 use lambda_runtime::{handler_fn, Context, Error};
 use log::LevelFilter;
 use serde::Serialize;
-use serde_json::Value;
 use simple_logger::SimpleLogger;
 
 #[tokio::main]
@@ -31,10 +30,7 @@ pub(crate) async fn my_handler(
 ) -> Result<ApiGatewayProxyResponse, Error> {
     let current_time = Utc::now().to_rfc2822();
 
-    let current_time_data = serde_json::to_string(&ResponseData {
-        current_time: current_time,
-    })
-    .unwrap();
+    let current_time_data = serde_json::to_string(&ResponseData { current_time }).unwrap();
 
     let resp = ApiGatewayProxyResponse {
         status_code: 200,
