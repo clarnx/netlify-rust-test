@@ -19,7 +19,7 @@ async fn main() -> Result<(), Error> {
 }
 
 pub(crate) async fn my_handler(
-    event: LambdaEvent<Value>,
+    event: LambdaEvent<ApiGatewayProxyRequest>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
     // let payload: ApiGatewayProxyRequest = serde_json::from_value(event.payload).unwrap();
 
