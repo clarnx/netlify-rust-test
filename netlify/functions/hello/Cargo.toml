@@ -6,9 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-aws_lambda_events = "0.4.0"
-http = "0.2.4"
-lambda_runtime = "0.3.0"
-log = "0.4.14"
-simple_logger = "1.11.0"
-tokio = "1.6.1"
+aws_lambda_events.workspace = true
+chrono.workspace = true
+http.workspace = true
+lambda_runtime.workspace = true
+log.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+simple_logger.workspace = true
+tokio.workspace = true

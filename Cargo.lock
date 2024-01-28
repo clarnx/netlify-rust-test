@@ -523,9 +523,12 @@ name = "netlify-rust-test"
 version = "0.1.0"
 dependencies = [
  "aws_lambda_events",
+ "chrono",
  "http",
  "lambda_runtime",
  "log",
+ "serde",
+ "serde_json",
  "simple_logger",
  "tokio",
 ]
