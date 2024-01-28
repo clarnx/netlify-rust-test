@@ -3,6 +3,7 @@ use aws_lambda_events::event::apigw::{ApiGatewayProxyRequest, ApiGatewayProxyRes
 use http::header::HeaderMap;
 use lambda_runtime::{service_fn, Error, LambdaEvent};
 use log::LevelFilter;
+use serde_json::Value;
 use simple_logger::SimpleLogger;
 
 #[tokio::main]
@@ -20,15 +21,15 @@ async fn main() -> Result<(), Error> {
 pub(crate) async fn my_handler(
     event: LambdaEvent<ApiGatewayProxyRequest>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
-    let path = event.payload.path.unwrap();
+    let payload = event.payload;
 
-    let message = format!("Hello world from {}", path);
+    // let message = format!("Hello world from {}", payload);
 
     let resp = ApiGatewayProxyResponse {
         status_code: 200,
         headers: HeaderMap::new(),
         multi_value_headers: HeaderMap::new(),
-        body: Some(Body::Text(message.to_owned())),
+        body: Some(Body::Text(payload.body.unwrap())),
         is_base64_encoded: false,
     };
 
