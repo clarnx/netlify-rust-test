@@ -152,6 +152,7 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "lambda_http",
+ "lambda_runtime",
  "serde_json",
  "tokio",
  "tracing",
