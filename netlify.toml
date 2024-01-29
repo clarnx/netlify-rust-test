@@ -3,6 +3,6 @@ environment = { NETLIFY_EXPERIMENTAL_BUILD_RUST_SOURCE = "true" }
 
 [[redirects]]
 from = "/*"
-to = "/.netlify/functions/current-time"
+to = "/.netlify/functions/axum-lambda-demo"
 status = 200
 force = true

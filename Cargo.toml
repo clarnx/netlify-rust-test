@@ -1,4 +1,4 @@
 [workspace]
 resolver = "2"
-members = ["netlify/functions/hello", "netlify/functions/current-time"]
+members = ["netlify/functions/hello", "netlify/functions/current-time", "netlify/functions/axum-lambda-demo"]
 
