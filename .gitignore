@@ -1,5 +1,1 @@
-target
-bins
-functions
-# Local Netlify folder
-.netlify
+/target

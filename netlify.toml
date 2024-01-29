@@ -1,12 +1,8 @@
-# [context.production]
-# environment = { NETLIFY_EXPERIMENTAL_BUILD_RUST_SOURCE = "true" }
-[build]
-command = "echo 'use build.sh' && exit 1"
-publish = "public"
-functions = "functions"
+[context.production]
+environment = { NETLIFY_EXPERIMENTAL_BUILD_RUST_SOURCE = "true" }
 
-# [[redirects]]
-# from = "/*"
-# to = "/.netlify/functions/axum-lambda-demo"
-# status = 200
-# force = true
+[[redirects]]
+from = "/*"
+to = "/.netlify/functions/axum-lambda-demo"
+status = 200
+force = true
