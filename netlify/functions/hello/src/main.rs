@@ -23,19 +23,20 @@ async fn main() -> Result<(), Error> {
 }
 
 pub(crate) async fn my_handler(
-    event: LambdaEvent<Value>,
+    event: LambdaEvent<ApiGatewayProxyRequest>,
 ) -> Result<ApiGatewayProxyResponse, Error> {
     // let payload = serde_json::from_value(event.payload);
 
-    let payload = event.payload;
+    let (event, _context) = event.into_parts();
+    let path = event.path.unwrap();
 
-    let message = format!("Hello world from {}", payload.get("path").unwrap());
+    let message = format!("Hello world from {}", path);
 
     let resp = ApiGatewayProxyResponse {
         status_code: 200,
         headers: HeaderMap::new(),
         multi_value_headers: HeaderMap::new(),
-        body: Some(Body::Text(serde_json::to_string(&payload).unwrap())),
+        body: Some(Body::Text(message)),
         is_base64_encoded: false,
     };
 
