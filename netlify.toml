@@ -1,2 +1,8 @@
 [context.production]
 environment = { NETLIFY_EXPERIMENTAL_BUILD_RUST_SOURCE = "true" }
+
+[[redirects]]
+from = "/*"
+to = "/.netlify/functions/current-time"
+status = 200
+force = true
